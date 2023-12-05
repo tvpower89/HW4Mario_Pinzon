@@ -1,23 +1,24 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-
+// mainwindow.h
 #include <QMainWindow>
+#include <QUdpSocket>
+#include "ui_mainwindow.h"  // Include the generated UI header
 
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
-QT_END_NAMESPACE
-
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *ui;  // Use the generated UI class pointer
+    QUdpSocket *transmitSocket;
+    QUdpSocket *receiveSocket;
+    QLineEdit *input;
+    QTextEdit *display;
+    QPushButton *send;
+    void sendMessage();
+    void receivedMessage();
+    void addMessage();
 };
-#endif // MAINWINDOW_H
